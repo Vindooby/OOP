@@ -1,28 +1,29 @@
-function photo (filePath,location,name){
-  this.filePath = filePath;
-  this.location= location;
-  }
-function Album(){
-  this.photo= [];
+//functions//
+
+function Person(gender,age,name){
+this.gender= gender
+this.age= age
+this.name= name
 }
 
-album.prototype.addPic = function(photo){
-  this.photos.push(photo)
+function Teacher(gender,age,name){
+  Person.call(this, gender, age, name)
 }
 
-var newPhoto= new photo("London.png","London","castle")
-var newPic= new photo ("Boston.png","Providence.png")
-var newPic1= new photo ("Dallas.png","LosAngeles.png")
-
-
-
-photo.prototype.pic= function(){
-  return "This photos name is: +" + this.name
-  // return "This photo was taken in" + this.location
-  // return "The File Path is" + this.filePath
-
+function Student(gender, age, name){
+  Person.call(this, gender, age, name)
 }
 
-var album = new Album ()
-album.addPic (newPhoto)
-console.log(album)
+function School(){
+  this.persons= []
+}
+//prototype objects//
+School.prototype.addPerson = function(person){
+  this.persons.push(person)
+}
+
+Person.prototype.displayAllInfo = function(){
+  return this.gender + "," + this.age + "," + this.name
+}
+Teacher.prototype = Object.create(Person.prototype)
+Student.prototype = Object.create(Person.prototype)
