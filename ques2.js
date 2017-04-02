@@ -13,7 +13,7 @@ function Teacher(gender,age,name){
 function Student(gender, age, name){
   Person.call(this, gender, age, name)
 }
-
+  
 function School(){
   this.persons= []
 }
